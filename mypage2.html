@@ -13,13 +13,16 @@
         #title{
             text-align: center;
         }
+        p{
+            font-size: 18px;
+        }
 
         ::marker {
             font-size: 0;
         }
 
         .gnavi__wrap {
-            width: 1200px;
+            width: 75%;
             margin: 0 auto;
         }
         .gnavi__lists {
@@ -118,6 +121,27 @@
         .gnavi__list:hover .dropdown__lists {
             transform: scaleY(1);/*Gナビメニューにホバーしたら表示*/
         }
+
+        .content {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .headline{
+            width: 60%;
+            margin: 0 auto;
+        }
+        .heading {
+            padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
+            color: #494949;/*文字色*/
+            background: #f4f4f4;/*背景色*/
+            border-left: solid 5px #7db4e6;/*左線*/
+            border-bottom: solid 3px #d7d7d7;/*下線*/
+        }
+        .text{
+            width: 100%;
+        }
+
     </style>
 </head>
 <body>
@@ -132,8 +156,8 @@
                 <a href="#">自己紹介</a>
                 <ul class="dropdown__lists">
                     <li class="dropdown__list"><a href="#">メニュー1</a></li>
-                    <li class="dropdown__list"><a href="#">メニュー1</a></li>
-                    <li class="dropdown__list"><a href="#">メニュー1</a></li>
+                    <li class="dropdown__list"><a href="#">取得資格</a></li>
+                    <li class="dropdown__list"><a href="#">自己PR</a></li>
                 </ul>
             </li>
             <li class="gnavi__list">
@@ -155,5 +179,13 @@
         </ul>
     </div>
 
+    <div class="content">
+        <div class="headline">
+        <h2 class="heading">トップページ</h2>
+            <div class="text">
+                <p>このページは就活用に作成いたしました。てててああああああああああああああああああaaaaaaaaaaaaaaaaaaaaaaaあ</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
