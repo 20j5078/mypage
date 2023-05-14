@@ -1,268 +1,271 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>塚越亮介のページ</title>
     <style>
-        html{
-            width: 100%;
-            scroll-behavior: smooth;
-        }
-        body{
-            width: 100%;
-        }
-        .title-set{
-            width: 150px;
-            margin-left: 19%;
-        }
-        #title{
-            margin-bottom: 0px;
+        /* CSS */
+        body {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
             text-align: center;
-        }
-        #title-mini{
-            margin-top: 0px;
-            font-size: 15px;
-            text-align: center;
-        }
-        p{
-            font-size: 18px;
-        }
-
-        ::marker {
-            font-size: 0;
-        }
-
-        .gnavi__wrap {
-            width: 75%;
-            margin: 0 auto;
-        }
-        .gnavi__lists {
+            background-color: #e0e8f5;
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        .gnavi__list {
-            width: 25%;
-            height: 60px;
-            background-color: #E5F0F8;
-            position: relative;
-            transition: all .3s;
+        
+        h1 {
+            color: #333;
         }
-        .gnavi__list:hover {
-            background-color: #0071BB;
+        
+        p {
+            color: #666;
+            line-height: 1.5;
         }
-        .gnavi__list:not(:first-child)::before {
-            content: "";
-            width: 1px;
-            height: 100%;
-            background-color: #fff;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: all .3s;
-        }
-        .gnavi__list:hover::before {
-            background-color: #0071BB;
-        }
-        .gnavi__list a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            text-decoration: none;
-            color: #1b4059;
-            font-size: 16px;
-            letter-spacing: 0.05em;
-            font-weight: 600;
-            transition: all .3s;
-        }
-        .gnavi__list:hover a {
-            color: #fff;
-        }
-
-        .dropdown__lists {
-            transform: scaleY(0);/*デフォルトでは非表示の状態にしておく*/
-            transform-origin: center top;/*変形を適応する基準をtopとする*/
-            transition: all .3s;/*表示の変化を0.3秒に指定*/
-            width: 100%;
-            position: absolute;
-            top: 60px;
-            left: -40px;
-        }
-        .gnavi__list:hover .dropdown__lists {
-            display: block;/*Gナビメニューにホバーしたら表示*/
-        }
-        .dropdown__list {
-            background-color: #004d80;
-            height: 60px;
-            transition: all .3s;
-            position: relative;
-        }
-        .dropdown__list:not(:first-child)::before{
-            content: "";
-            width: 100%;
-            height: 1px;
-            background-color: #3492d1;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        .dropdown__list:hover {
-            background-color: #003558;
-        }
-        .dropdown__list a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            text-decoration: none;
-            position: relative;
-        }
-        .dropdown__list a::before {
-            content: '';
+        
+        #profile-image {
+            max-width: 200px;
+            border-radius: 50%;
             display: block;
-            width: 6px;
-            height: 6px;
-            border-top: 2px solid #fff;
-            border-left: 2px solid #fff;
-            transform: rotate(135deg);
+            margin: 0 auto;
+            margin-bottom: 20px;
+            animation: fade-in 1s ease-out;
+        }
+        
+        .tab {
+            display: none;
+            text-align: left;
+            margin-left: 20%;
+            margin-right: 20%;
+            padding-bottom: 100px;
+        }
+        
+        .tab.active {
+            display: block;
+            animation: fade-in 1s ease-out;
+        }
+        
+        .tab-buttons {
+            margin-bottom: 20px;
+        }
+        
+        .tab-button {
+            display: inline-block;
+            padding: 10px 30px;
+            background-color: #ccc;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s ease-out;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+        
+        .tab-button.active {
+            background-color: #333;
+            color: #fff;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            margin-bottom: 20px;
+        }
+        
+        .video-container iframe {
             position: absolute;
-            right: 15px;
-            top: calc(50% - 5px);
-        }
-        .gnavi__list:hover .dropdown__lists {
-            transform: scaleY(1);/*Gナビメニューにホバーしたら表示*/
-        }
-
-        .content {
+            top: 0;
+            left: 0;
             width: 100%;
-            margin: 0 auto;
+            height: 100%;
         }
-
-        .headline{
+        
+        footer {
+            margin-top: auto;
+            background-color: #ccc;
+            padding: 20px;
+            animation: fade-in 1s ease-out;
+            position: fixed;
+            left: 0;
+            bottom: 0;
             width: 100%;
-            margin: 0 auto;
         }
-        .heading {
-            padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
-            color: #494949;/*文字色*/
-            background: #f4f4f4;/*背景色*/
-            border-left: solid 5px #7db4e6;/*左線*/
-            border-bottom: solid 3px #d7d7d7;/*下線*/
+        
+        footer a {
+            color: #333;
+            text-decoration: none;
+            margin-right: 10px;
+            transition: color 0.3s ease-out;
         }
-        .text{
-            width: 100%;
-            background-color: rgb(229, 238, 240);
+        
+        footer a:hover {
+            color: #666;
         }
-
-        .container {
-            width: 65%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
+        
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
-
-        .main-contents {
-            width: 70%;
-            padding: 10px;
-        }
-
-        .side-menu {
-            width: 20%;
-            height: 300px;
-            padding: 10px;
-            margin-top: 29.92px;
-            background-color: rgb(230, 227, 227);
-        }
-        .link{
-            margin-top: 0px;
-            margin-bottom: 5px;
-        }
-
     </style>
 </head>
 <body>
-    <div class="title-set">
-        <h1 id="title">塚越 亮介</h1>
-        <p id="title-mini">Tsukagoshi Ryosuke</p>
-    </div>
-    <div class="gnavi__wrap">
-        <ul class="gnavi__lists">
-            <li class="gnavi__list">
-                <a href="top.html">トップページ</a>
-            </li>
-            <li class="gnavi__list">
-                <a href="Introduction.html">自己紹介</a>
-                <ul class="dropdown__lists">
-                    <li class="dropdown__list"><a href="Introduction.html#self-introduction">プロフィール</a></li>
-                    <li class="dropdown__list"><a href="Introduction.html#qualification">取得資格</a></li>
-                    <li class="dropdown__list"><a href="Introduction.html#self-PR">自己PR</a></li>
-                </ul>
-            </li>
-            <li class="gnavi__list">
-                <a href="labo.html">研究室</a>
-                <ul class="dropdown__lists">
-                    <li class="dropdown__list"><a href="labo.html#labo">研究室紹介</a></li>
-                    <li class="dropdown__list"><a href="labo.html#content">研究内容</a></li>
-                    <li class="dropdown__list"><a href="labo.html#event">教育イベント</a></li>
-                </ul>
-            </li>
-            <li class="gnavi__list">
-                <a href="outcome.html">成果物</a>
-                <ul class="dropdown__lists">
-                    <li class="dropdown__list"><a href="outcome.html#list">成果物一覧</a></li>
-                    <li class="dropdown__list"><a href="outcome.html#game">横スクロールゲーム</a></li>
-                    <li class="dropdown__list"><a href="outcome.html#music">自動作曲</a></li>
-                    <li class="dropdown__list"><a href="outcome.html#setup">セットアップ集</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+    <h1>自己紹介</h1>
+    
+    <img id="profile-image" src="profile.jpg" alt="プロフィール画像">
+    
+    <p>名前: 塚越 亮介</p>
+    
+    <p>年齢: 21歳</p>
 
+    <p>生年月日: 2002年1月30日</p>
 
-    <div class="container">
-        <div class="main-contents">
-            <div class="content">
-                <div class="headline">
-                <h2 class="heading">トップページ</h2>
-                    <div class="text">
-                        <p>このページは、自分の情報を管理するために作成しました。<br>
-                           また、企業様に自分のことをもっと知ってもらいたいと考えたためでもあります。</p>
-                        <p> ・PCで閲覧することを推奨します。<br>
-                            ・リンクをSNS等で拡散することはお控えください。<br>
-                            ・予告なく削除する場合があります。</p>
-                        <p>お問い合わせは、大学用メールアドレス「<a href="mailto:20j5078@stu.meisei-u.ac.jp">20j5078@stu.meisei-u.ac.jp</a>」にお願いします。</p>
-                    </div>
-                </div>
-            </div>
-            <div class="content">
-                <div class="headline">
-                <h2 class="heading">書き散らし</h2>
-                    <div class="text">
-                        <p>・触ったことのある言語（学習時間順）<br>
-                            C言語　Python　Java　HTML,CSS,PHP　mySQL　C++,C#　JavaScript</p>
-                        <p>・触ったことのあるサービス,サイト<br>
-                            Kaggle　Docker　NS3,Ros2　etc...</p>
-                        <p>・2023年3月7日<br>
-                            <a href="https://www.gakkai-web.net/ieice/iss_sp/top.html" target="_blank">2023年電子情報通信学会 総合大会
-                                ISS特別企画「ジュニア＆学生ポスターセッション」</a>に参加しました。
-                            </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="side-menu">
-            <h3 class="link">関連リンク</h3>
-            <a href="https://www.meisei-u.ac.jp/" target="_blank">明星大学ホームページ</a><br>
-            <a href="https://kenkyu.hino.meisei-u.ac.jp/suedalab/index.html" target="_blank">末田研究室</a><br>
-            <a href="https://github.com/20j5078/mypage" target="_blank">github</a><br>
-            <a href="https://www.youtube.com/channel/UCvrHVP0htMxje9R-x38S7Lg/featured" target="_blank">YouTube</a>
-            <br><br>
-            <h3 class="link">その他</h3>
-            <a href="https://www.city.sayama.saitama.jp/" target="_blank">狭山市-ホームページ</a><br>
-            <a href="https://www.kaggle.com/" target="_blank">Kaggle</a><br>
-            <a href="https://www.fe-siken.com/fekakomon.php" target="_blank">基本情報-過去問道場</a><br>
-            <a href="https://playvalorant.com/ja-jp/" target="_blank">VALORANT</a>
-        </div>
+    <p>出身地: 埼玉県狭山市</p>
+    
+    <p>学歴: 明星大学 情報学部情報学科 在学中</p>
+    
+    <p>趣味: テニス、ゲーム</p>
+    
+    /*タブ機能 */
+    <div class="tab-buttons">
+        <div class="tab-button active" onclick="changeTab(1)">自己紹介</div>
+        <div class="tab-button" onclick="changeTab(2)">研究室</div>
+        <div class="tab-button" onclick="changeTab(3)">成果物</div>
     </div>
+    
+    <div class="tab active" id="tab1">
+        <h2>自己紹介</h2>
+        <p>明星大学の情報学部でIT系の学問を学んでいます。</br>
+            研究室では、主にIoTについての研究を行っています。
+        </p>
+        <p>趣味はテニスとゲームで、テニスは幼稚園の頃からクラブチームに所属していました。</br>
+            大学ではテニスサークルに参加したかったのですが、コロナの影響で2年間、活動を行っていませんでした。
+            現在は、近所のテニスコートで練習を行っているグループとご縁があり、参加させていただいています。
+        </p>
+
+        <h2>取得資格</h2>
+        <p>2020年 6月 <b>普通自動車第一種運転免許</b> 合格</p>
+        <p>2021年 8月 <b>CG-ARTS 画像処理検定ベーシック</b> 合格</p>
+        <p>2021年 8月 <b>CG-ARTS CGエンジニア検定ベーシック</b> 合格</p>
+        <p>2021年12月 <b>基本情報技術者試験</b> 合格</p>
+    </div>
+    
+    <div class="tab" id="tab2">
+        <h2>研究室紹介</h2>
+        <p>明星大学 情報学部 情報学科</p>
+        <p>末田研究室</p>
+        <p>IoTを活用して、ユーザに新たな価値を提供することを目指し、研究を推進します。<br>
+            さらに、学会や他大学との交流を通じて、研究成果を世の中に発信します。</p>
+        <p><キーワード><br>
+            IoT、ネットワーク、セキュリティ、プロトコル、IoTサービス、IoTシステム、コミュニケーション、通信</p>
+        <p><特徴><br>
+        研究室の全員が電子情報通信学会へ入会し、学会発表を行います。<br>
+        工学院大学との合同発表会が複数回実施されます。</p>
+
+        <h2>研究内容</h2>
+        <p>近赤外線を用いた唾液分泌量の推定について研究しようと考えています。</br>
+            高齢者や口腔機能の低下している方は、口腔内の乾燥による食事中の誤嚥に気を付けなければなりません。
+            そこで、口内の状況を定量的に判断できるようなシステムを研究しようと考えました。</br>
+            食事は毎日するものなので、継続して使用してもらうことが重要となります。
+            そのため、システムを使う際の手軽さを重視しています。</br>
+            パルスオキシメーターなどで用いられる近赤外線をこめかみ部分に当てることでヘモグロビン信号を調べることができます。
+            ヘモグロビン信号は唾液分泌によって増減することが確認されています。
+            この信号を機械学習し、唾液分泌量を推定していきます。</p>
+        <p>現在は、先行研究を調査して研究室内で発表、デバイスの作成に取り掛かっています。<br>
+        また、レンタルサーバを借り、Docker、NS-3、ROS2についての勉強も研究室で行っています。</p>
+
+        <h2>教育イベント</h2>
+        <p>中高生を対象とした、プログラミング教室「<b>IoTを身近に感じて、プログラミングを体験しよう</b>」を開催しました。</p>
+        <p>本イベントは、電子情報通信学会東京支部との共同主催であり、楽しい体験を通じて、
+            情報学、電子情報通信分野のおもしろさ、すばらしさを体感して頂くことを目的としています。</p>
+        <p>学生が主体となり、Scratch、Microbitでのゲームプログラミングを紹介し、作成の手伝いをさせていただきました。</p>
+    </div>
+    
+    <div class="tab" id="tab3">
+        <h2>ポスターセッション</h2>
+        <p>ゼミの活動として発表しました。</p>
+        <p><a href="https://www.gakkai-web.net/ieice/iss_sp/top.html" target="_blank">2023年電子情報通信学会 総合大会
+            ISS特別企画「ジュニア＆学生ポスターセッション」</a>
+        </p>
+        <p>チーム作業（4人）<br>
+            C++<br>
+            ns3</p>
+        <p>「アプリケーション情報を用いたハンドオーバの検討」</p>
+        <p>ハンドオーバなどに起因する遅延や品質劣化を最小化する手法をアプリケーション主導のハンドオーバを導入し解決する手法を提案しました。
+            </p>
+        <p>下図は既存のハンドオーバがどのように行われているのか確認したものです。UE(端末)が左上端から右下端に移動する際、1→2→3の順番でハンドオーバが行われています。
+            ハンドオーバの回数が増えると、情報の受け渡しも増えるので動作が不安定になっていきます。</p>
+        <p>1→3のように進行方向に存在する基地局につなげることが理想です。そのため、位置情報や目的地などのアプリケーション情報を用いてハンドオーバ回数を減らす手法を提案しました。</p>
+        <img src="poster.png" alt="handover" width="300" height="300">
+        <img src="poster2.png" alt="handover" width="300" height="300">
+
+        <h2>横スクロールアクションゲーム</h2>
+        <p>大学の授業で作成したものです。</p>
+        <p>チーム開発（3人）<br>
+            Java <br>
+            GUI</p>
+        <p>キーボード操作で遊ぶ横スクロール2Dアクションゲームを作成しました。</p>
+        <p>キャラクター、ブロックはテーマを決めて自作しました。五つのステージを用意し、それぞれにあったBGMを
+            お借りして流しています。BGMとSEはオプション画面から音量調節を行うことができます。
+            プレイ画面では一時停止、ゲームオーバー、ステージクリア画面を作成し、遊びやすいデ
+            ザインにしています。
+            </p>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/TNU2L3Sho1g" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <h2>自動作曲</h2>
+        <p>大学の授業で作成したものです。</p>
+        <p>MIDIプログラミングによる自動作曲<br>
+            C++ </p>
+        <p>作品を作り始めた時期に、東京都のコロナ新規感染者数が増え、ニュースになっていました。<br>
+            感染者数推移のグラフを見ていたところ、スペクトル解析した際のグラフに見え、音楽にできるのではないかと考えたのでこの作品を制作しました。</p>
+        <p>感染者数が増えると音が大きくなり、高くなっていきます。ホラー風のものにしたかったので、「エクソシスト」や「Saw」のテーマ曲を参考にして、ベルの音で作ることにしました。</p>                            
+        <p>感染者数のデータを変更、増やすなどすれば自動作曲で曲が変わるため、時期によっては全然違うものになります。</p>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/M9qwQTH6adI" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <h2>セットアップ集</h2>
+        <p>趣味でやっているゲーム「VALORANT」のセットアップ集です。</p>
+        <p>セットアップ集とは、目当ての場所にスキルを入れるために、どの位置から何を目印にすればいいかをまとめたものです。<br>
+            スマホで見ることを前提に、マップやキャラクターの選択画面を作成しました。<br>
+            まだ製作途中なので、公開はしていません。
+        </p>
+        <img src="VALO_Chara.png" alt="MAP" width="300" height="auto">
+        <img src="VALO_Setup.png" alt="MAP" width="300" height="auto">
+    </div>
+    
+    /*フッター */
+    <footer>
+        <a href="https://www.meisei-u.ac.jp/">明星大学</a>
+        <a href="https://kenkyu.hino.meisei-u.ac.jp/suedalab/index.html">末田研究室</a>
+        <a href="https://github.com/20j5078/mypage">GitHub</a>
+        <a href="https://www.youtube.com/channel/UCvrHVP0htMxje9R-x38S7Lg/featured">YouTube</a>
+    </footer>
+    
+    <script>
+        // JavaScript
+        function changeTab(tabNumber) {
+            var tabs = document.getElementsByClassName('tab');
+            var tabButtons = document.getElementsByClassName('tab-button');
+            
+            // クリックされたタブを表示、他のタブを非表示
+            for (var i = 0; i < tabs.length; i++) {
+                if (i + 1 === tabNumber) {
+                    tabs[i].classList.add('active');
+                    tabButtons[i].classList.add('active');
+                } else {
+                    tabs[i].classList.remove('active');
+                    tabButtons[i].classList.remove('active');
+                }
+            }
+        }
+    </script>
 </body>
 </html>
